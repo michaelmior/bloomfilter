@@ -122,6 +122,17 @@ public interface BloomFilter<T> {
 	public boolean containsAll(Collection<T> values);
 
 	/**
+	 * Check if this bloom filter is compatible with another bloom filter.
+	 * 
+	 * @param other
+	 *            another {@link BloomFilter} to compare against
+	 * 
+	 * @return <code>true</code> if the filters are compatible,
+	 *         <code>false</code> otherwise
+	 */
+	public boolean isCompatibleWith(BloomFilter<?> other);
+
+	/**
 	 * Set the {@link Charset} for the given name for converting objects to byte-arrays.
 	 * 
 	 * @param charsetName the name of the charset to be used
@@ -141,6 +152,13 @@ public interface BloomFilter<T> {
 	 * @return the current {@link Decomposer} being used
 	 */
 	public Decomposer<T> getObjectDecomposer();
+
+	/**
+	 * Return the maximum false positive probability.
+	 * 
+	 * @return the maximum false positive probability
+	 */
+	public double getMaxFalsePositiveProbability();
 	
 	/**
 	 * Return the number of bits being used by the filter.

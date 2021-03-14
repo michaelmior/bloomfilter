@@ -83,6 +83,11 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
 	 * The {@link BitArray} instance that holds the entire data
 	 */
 	protected final BitArray bitArray;
+
+	/**
+	 * Maximum false positive probability
+	 */
+	protected final double maxFalsePositiveProbability;
 	
 	/**
 	 * Number of hash functions needed
@@ -158,6 +163,7 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
 	 *            the hashing function
 	 */
 	protected AbstractBloomFilter(int expectedInsertions, double falsePositiveProbability, Decomposer<T> decomposer, HashFunction hasher) {
+		this.maxFalsePositiveProbability = falsePositiveProbability;
 		this.numBitsRequired = optimalBitSizeOrM(expectedInsertions, falsePositiveProbability);
 		this.kOrNumberOfHashFunctions = optimalNumberofHashFunctionsOrK(expectedInsertions, numBitsRequired);
 		this.bitArray = createBitArray(numBitsRequired);
@@ -282,7 +288,78 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Check if this bloom filter possibly contains a subset of the values
+	 * present in another bloom filter.
+	 * 
+	 * @param other
+	 *            another {@link AbstractBloomFilter} to compare against
+	 * 
+	 * @return <code>true</code> if this filter may represent a subset of
+	 *         items present in the other filter, <code>false</code> otherwise
+	 */
+	public boolean maybeSubsetOf(AbstractBloomFilter<?> other) {
+		if (!this.isCompatibleWith(other)) {
+			throw new RuntimeException("Bloom filters incompatible");
+		}
+		for (int i = 0; i < other.getNumberOfBits(); i++) {
+            if (this.bitArray.getBit(i) && !other.bitArray.getBit(i)) {
+                return false;
+            }
+		}
+		return true;
+	}
+
+	/**
+	 * Check if this bloom filter possibly contains a superset of the values
+	 * present in another bloom filter.
+	 * 
+	 * @param other
+	 *            another {@link AbstractBloomFilter} to compare against
+	 * 
+	 * @return <code>true</code> if this filter may represent a superset of
+	 *         items present in the other filter, <code>false</code> otherwise
+	 */
+	public boolean maybeSupersetOf(AbstractBloomFilter<T> other) {
+		return other.maybeSubsetOf(this);
+	}
+
+	/**
+	 * Check if this bloom filter is compatible with another bloom filter.
+	 * 
+	 * @param other
+	 *            another {@link BloomFilter} to compare against
+	 * 
+	 * @return <code>true</code> if the filters are compatible,
+	 *         <code>false</code> otherwise
+	 */
+	public boolean isCompatibleWith(BloomFilter<?> other) {
+		if (getNumberOfBits() != other.getNumberOfBits()) {
+			return false;
+		}
+
+		if (getMaxFalsePositiveProbability() != other.getMaxFalsePositiveProbability()) {
+			return false;
+
+		}
+
+		Decomposer<?> decomposer1 = getObjectDecomposer();
+		Decomposer<?> decomposer2 = other.getObjectDecomposer();
+		if (decomposer1 == null || decomposer2 == null) {
+			if (decomposer1 != decomposer2) {
+				return false;
+			}
+		} else if (!decomposer1.equals(decomposer2)){
+			return false;
+		}
+
+		// XXX This really should check the type parameter as well
+
+		return true;
+	}
+
+
 	// Helper functions for functionality within
 	
 	/**
@@ -478,6 +555,16 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
 		}
 		
 		return null;
+	}
+
+	/**
+	 * Return the maximum false positive probability.
+	 * 
+	 * @return the maximum false positive probability
+	 */
+	@Override
+	public double getMaxFalsePositiveProbability() {
+		return this.maxFalsePositiveProbability;
 	}
 	
 	/**

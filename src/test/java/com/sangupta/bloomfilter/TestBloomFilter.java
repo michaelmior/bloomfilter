@@ -42,6 +42,31 @@ public class TestBloomFilter {
 	private static final int MAX = 1000 * 1000;
 	
 	private static final double FPP = 0.01;
+
+	@Test
+	public void testCompatibility() {
+		BloomFilter<String> filter1 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+		BloomFilter<String> filter2 = new InMemoryBloomFilter<String>(1 * MAX, FPP);
+	    Assert.assertTrue(filter1.isCompatibleWith(filter1));
+	    Assert.assertFalse(filter1.isCompatibleWith(filter2));
+    }
+
+	@Test
+	public void testSubset() {
+		InMemoryBloomFilter<String> filter1 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+		InMemoryBloomFilter<String> filter2 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+
+        filter1.add("foo");
+
+        filter2.add("foo");
+        filter2.add("bar");
+
+        Assert.assertTrue(filter1.maybeSubsetOf(filter2));
+        Assert.assertTrue(filter2.maybeSupersetOf(filter1));
+
+        Assert.assertFalse(filter2.maybeSubsetOf(filter1));
+        Assert.assertFalse(filter2.maybeSupersetOf(filter1));
+    }
 	
 	@Test
 	public void testDefaultFilter() {
