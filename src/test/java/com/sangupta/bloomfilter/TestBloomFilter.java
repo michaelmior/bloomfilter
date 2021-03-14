@@ -65,7 +65,7 @@ public class TestBloomFilter {
         Assert.assertTrue(filter2.maybeSupersetOf(filter1));
 
         Assert.assertFalse(filter2.maybeSubsetOf(filter1));
-        Assert.assertFalse(filter2.maybeSupersetOf(filter1));
+        Assert.assertFalse(filter1.maybeSupersetOf(filter2));
     }
 	
 	@Test
