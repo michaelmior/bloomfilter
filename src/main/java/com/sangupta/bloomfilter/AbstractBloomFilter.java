@@ -454,6 +454,21 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
 		
 		return success;
 	}
+
+	/**
+	 * Merge with another bloom filter.
+	 * 
+	 * @param other
+	 *            the other bloom filter to merge with
+	 * 
+	 */
+	public void merge(AbstractBloomFilter<T> other) {
+		if (!this.isCompatibleWith(other)) {
+			throw new RuntimeException("Bloom filters incompatible");
+		} else {
+			this.bitArray.or(other.bitArray);
+		}
+	}
 	
 	/**
 	 * Check if the given value exists in the bloom filter. Note that this

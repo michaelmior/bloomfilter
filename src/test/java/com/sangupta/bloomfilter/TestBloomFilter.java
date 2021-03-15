@@ -67,6 +67,19 @@ public class TestBloomFilter {
         Assert.assertFalse(filter2.maybeSubsetOf(filter1));
         Assert.assertFalse(filter1.maybeSupersetOf(filter2));
     }
+
+	@Test
+	public void testMerge() {
+		InMemoryBloomFilter<String> filter1 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+		InMemoryBloomFilter<String> filter2 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+
+        filter1.add("foo");
+        filter2.add("bar");
+
+        filter1.merge(filter2);
+
+        Assert.assertTrue(filter1.contains("bar"));
+    }
 	
 	@Test
 	public void testDefaultFilter() {
