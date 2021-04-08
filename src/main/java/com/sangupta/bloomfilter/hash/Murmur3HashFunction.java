@@ -21,6 +21,8 @@
 
 package com.sangupta.bloomfilter.hash;
 
+import java.io.Serializable;
+
 import com.sangupta.murmur.Murmur3;
 
 /**
@@ -29,7 +31,7 @@ import com.sangupta.murmur.Murmur3;
  * @author sangupta
  * @since 1.0
  */
-public class Murmur3HashFunction implements HashFunction {
+public class Murmur3HashFunction implements HashFunction, Serializable {
 	
 	private static final long SEED = 0x7f3a21eal;
 	

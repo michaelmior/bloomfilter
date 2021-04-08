@@ -22,6 +22,7 @@
 package com.sangupta.bloomfilter.core;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.BitSet;
 
 /**
@@ -31,7 +32,7 @@ import java.util.BitSet;
  * @author sangupta
  * @since 1.0
  */
-public class JavaBitSetArray implements BitArray {
+public class JavaBitSetArray implements BitArray, Serializable {
 	
 	final BitSet bitSet;
 	

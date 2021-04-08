@@ -23,6 +23,7 @@ package com.sangupta.bloomfilter;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.Collection;
 
@@ -52,7 +53,7 @@ import com.sangupta.bloomfilter.hash.Murmur3HashFunction;
  * 
  * @param <T> the type of objects to be stored in the filter
  */
-public abstract class AbstractBloomFilter<T> implements BloomFilter<T> {
+public abstract class AbstractBloomFilter<T> implements BloomFilter<T>, Serializable {
 	
 	/**
 	 * The decomposer to use when there is none specified at construction
