@@ -22,6 +22,7 @@
 package com.sangupta.bloomfilter.core;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import org.roaringbitmap.RoaringBitmap;
 
@@ -31,7 +32,7 @@ import org.roaringbitmap.RoaringBitmap;
  * @author sangupta
  * @since 1.0
  */
-public class RoaringBitSetArray implements BitArray {
+public class RoaringBitSetArray implements BitArray, Serializable {
 	
 	final RoaringBitmap bitmap;
 	
