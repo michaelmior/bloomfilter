@@ -80,6 +80,21 @@ public class TestBloomFilter {
 
         Assert.assertTrue(filter1.contains("bar"));
     }
+
+	@Test
+	public void testIntersect() {
+		InMemoryBloomFilter<String> filter1 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+		InMemoryBloomFilter<String> filter2 = new InMemoryBloomFilter<String>(10 * MAX, FPP);
+
+        filter1.add("bar");
+        filter2.add("foo");
+        filter2.add("bar");
+
+        filter1.intersect(filter2);
+
+        Assert.assertFalse(filter1.contains("foo"));
+        Assert.assertTrue(filter1.contains("bar"));
+    }
 	
 	@Test
 	public void testDefaultFilter() {

@@ -470,6 +470,21 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T>, Serializ
 			this.bitArray.or(other.bitArray);
 		}
 	}
+
+	/**
+	 * Intersect with another bloom filter.
+	 * 
+	 * @param other
+	 *            the other bloom filter to intersect with
+	 * 
+	 */
+	public void intersect(AbstractBloomFilter<T> other) {
+		if (!this.isCompatibleWith(other)) {
+			throw new RuntimeException("Bloom filters incompatible");
+		} else {
+			this.bitArray.and(other.bitArray);
+		}
+	}
 	
 	/**
 	 * Check if the given value exists in the bloom filter. Note that this
