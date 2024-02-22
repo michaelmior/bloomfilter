@@ -67,7 +67,7 @@ filter = new AbstractBloomFilter<String>(numberOfElements, fpp) {
 };
 ```
 
-`BitArray` is an interface defined in `com.sangupta.bloomfilter.core` package. This provides methods that
+`BitArray` is an interface defined in `io.github.michaelmior.bloomfilter.core` package. This provides methods that
 any implementation can be provide and thus be used as a bloom-filter implementation. This allows for rolling
 out bloom filter implementations backed by file based persistence, Redis server or similar. The following
 implementations are available for the `interface`:
@@ -139,8 +139,9 @@ For more information on SemVer, please visit http://semver.org/.
 ```
 bloomfilter: Bloom filters for Java
 Copyright (c) 2014-2018, Sandeep Gupta
+Copyright (c) 2021-2024, Michael Mior
 
-https://sangupta.com/projects/bloomfilter
+https://github.com/michaelmior/bloomfilter
 
 Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
