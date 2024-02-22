@@ -39,21 +39,15 @@ public class RoaringBloomFilter<T> extends AbstractBloomFilter<T> {
 	/**
 	 * Constructor
 	 * 
-	 * @param n
-	 *            the number of elements expected to be inserted in the bloom
-	 *            filter
+	 * @param n the number of elements expected to be inserted in the Bloom
+	 *          filter
 	 * 
-	 * @param fpp
-	 *            the expected max false positivity rate
+	 * @param fpp the expected max false positivity rate
 	 */
 	public RoaringBloomFilter(int n, double fpp) {
 		super(n, fpp);
 	}
 
-	/**
-	 * Used a normal {@link JavaBitSetArray}.
-	 * 
-	 */
 	@Override
 	protected BitArray createBitArray(int numBits) {
 		return new RoaringBitSetArray(numBits);

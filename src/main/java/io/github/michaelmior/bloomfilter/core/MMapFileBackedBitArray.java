@@ -70,8 +70,9 @@ public class MMapFileBackedBitArray implements BitArray {
 	 * that the file is a local file and not on a network share for performance
 	 * reasons.
 	 * 
-	 * @param backingFile
-	 * @throws IOException 
+	 * @param backingFile file that represents the state of the bit-array
+     * @param maxElements the maximum number of elements this file will store
+	 * @throws IOException if the file cannot be opened
 	 */
 	public MMapFileBackedBitArray(File backingFile, int maxElements) throws IOException {
 		if(backingFile == null) {
@@ -198,8 +199,8 @@ public class MMapFileBackedBitArray implements BitArray {
 	
 	/**
 	 * 
-	 * @param newLength
-	 * @throws IOException
+	 * @param newLength the new length of the backing file
+	 * @throws IOException if the file cannot be written
 	 */
 	protected void extendFile(final long newLength) throws IOException {
 		long current = this.backingFile.length();
@@ -225,7 +226,7 @@ public class MMapFileBackedBitArray implements BitArray {
 	 * Method that helps unmap a memory-mapped file before being
 	 * garbage-collected.
 	 * 
-	 * @param cb
+	 * @param cb byte buffer to close
 	 */
 	protected void closeDirectBuffer(ByteBuffer cb) {
 	    if (!cb.isDirect()) {

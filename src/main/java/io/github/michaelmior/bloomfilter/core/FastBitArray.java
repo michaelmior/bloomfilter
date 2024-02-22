@@ -174,9 +174,13 @@ public class FastBitArray {
 	 * Returns the result of dividing {@code p} by {@code q}, rounding using the
 	 * specified {@code RoundingMode}.
 	 * 
+     * @param p the dividend
+     * @param q the divisor
+     * @param mode the rounding mode
 	 * @throws ArithmeticException
 	 *             if {@code q == 0}, or if {@code mode == UNNECESSARY} and
 	 *             {@code a} is not an integer multiple of {@code b}
+     * @return the result of {@code p} divided by {@code q}
 	 */
 	@SuppressWarnings("fallthrough")
 	public static long divide(long p, long q, RoundingMode mode) {

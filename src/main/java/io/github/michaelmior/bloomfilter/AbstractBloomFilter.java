@@ -536,10 +536,10 @@ public abstract class AbstractBloomFilter<T> implements BloomFilter<T>, Serializ
 	 * @throws IllegalArgumentException
 	 *             if the charsetName is null
 	 * 
-	 * @throws IllegalCharsetNameException
+	 * @throws java.nio.charset.IllegalCharsetNameException
 	 *             If the given charset name is illegal
 	 * 
-	 * @throws UnsupportedCharsetException
+	 * @throws java.nio.charset.UnsupportedCharsetException
 	 *             If no support for the named charset is available in this
 	 *             instance of the Java virtual machine
 	 */

@@ -35,7 +35,7 @@ public interface Decomposable {
 	/**
 	 * Decompose this object and render into the given {@link ByteSink} instance.
 	 * 
-	 * @param into
+	 * @param into instance to render into
 	 */
 	public void decompose(ByteSink into);
 

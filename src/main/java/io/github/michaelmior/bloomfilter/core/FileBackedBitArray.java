@@ -62,8 +62,9 @@ public class FileBackedBitArray implements BitArray {
 	 * that the file is a local file and not on a network share for performance
 	 * reasons.
 	 * 
-	 * @param backingFile
-	 * @throws IOException 
+	 * @param backingFile file to use for backing the array
+     * @param maxElements maximum number of elements in the array
+	 * @throws IOException if the file cannot be opened
 	 */
 	public FileBackedBitArray(File backingFile, int maxElements) throws IOException {
 		if(backingFile == null) {
@@ -216,8 +217,8 @@ public class FileBackedBitArray implements BitArray {
 	
 	/**
 	 * 
-	 * @param newLength
-	 * @throws IOException
+	 * @param newLength new length in bytes
+	 * @throws IOException if the file cannot be written
 	 */
 	protected void extendFile(final long newLength) throws IOException {
 		long current = this.backingFile.length();

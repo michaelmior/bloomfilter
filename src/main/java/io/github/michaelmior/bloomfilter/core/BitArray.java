@@ -38,7 +38,7 @@ public interface BitArray extends Closeable {
 	 * @param index
 	 *            the index of the bit in the array
 	 * 
-	 * @return <code>true<code> if the but is set, <code>false</code> otherwise
+	 * @return true if the but is set, false otherwise
 	 */
 	public boolean getBit(int index);
 	
@@ -48,7 +48,7 @@ public interface BitArray extends Closeable {
 	 * @param index
 	 *            the index of the bit in the array
 	 * 
-	 * @return <code>true</code> if the bit was updated, <code>false</code>
+	 * @return true if the bit was updated, false
 	 *         otherwise.
 	 * 
 	 */
@@ -74,8 +74,7 @@ public interface BitArray extends Closeable {
 	 * @param index
 	 *            the index of the bit in the array
 	 * 
-	 * @return <code>true</code> if the bit was updated, <code>false</code>
-	 *         otherwise.
+	 * @return true if the bit was updated, false otherwise.
 	 */
 	public boolean setBitIfUnset(int index);
 

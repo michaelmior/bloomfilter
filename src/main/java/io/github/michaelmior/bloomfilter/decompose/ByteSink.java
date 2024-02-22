@@ -48,7 +48,7 @@ public class ByteSink {
 	/**
 	 * Get the byte-array of bytes currently stored
 	 * 
-	 * @return
+	 * @return the byte array currently stored
 	 */
 	public byte[] getByteArray() {
 		return stream.toByteArray();
@@ -57,8 +57,8 @@ public class ByteSink {
 	/**
 	 * Store a single byte in this sink
 	 * 
-	 * @param b
-	 * @return
+	 * @param b the byte to write
+	 * @return this byte sink
 	 */
 	public ByteSink putByte(byte b) {
 		this.stream.write(b);
@@ -68,8 +68,8 @@ public class ByteSink {
 	/**
 	 * Store the given bytes in this sink.
 	 * 
-	 * @param bytes
-	 * @return
+	 * @param bytes all bytes to store
+	 * @return this byte sink
 	 */
 	public ByteSink putBytes(byte[] bytes) {
 		try {
@@ -83,10 +83,10 @@ public class ByteSink {
 	
 	/**
 	 * 
-	 * @param bytes
-	 * @param offset
-	 * @param length
-	 * @return
+	 * @param bytes bytes to store
+	 * @param offset offset of the stored bytes
+	 * @param length length of bytes to write to the stream
+	 * @return this byte sink
 	 */
 	public ByteSink putBytes(byte[] bytes, int offset, int length) {
 		this.stream.write(bytes, offset, length);
