@@ -9,29 +9,15 @@ entire bloom filter is abstracted into various layers so that the same can be ch
 such as decomposing an object to a byte-stream, or the hash function to be used, or the serialization strategy to
 be used.
 
-## Why another Bloom Filter implementation?
-
-
-`bloomfilter` was developed as I was looking for a fast persistable bloom filter implementation that could
-be customized to suit needs. The `Google Guava` bloom filter for few reasons cannot be persisted well, does not
-provide for a disk-backed bit array implementation, missing a counting bloom filter and last not the least 
-the size of the payload. Many of my modules/projects did not need `Guava` and adding it just for using the 
-bloom filter was coming out to be expensive. Thus, `bloomfilter` was born.
-
-The `bloomfilter` is inspired by the `Guava` bloom filter implementation and uses a similar approach, with 
-more extension points baked in.
-
 ## Features
 
-* Uses pure Java [murmur](https://github.com/sangupta/murmur) hash implementation as default hash function
+* Uses pure Java [MurmurHash](https://github.com/sangupta/murmur) implementation as default hash function
 * Multiple persisting methodologies
   * In-memory filter
   * Java serialization disk filter
   * Memory-mapped disk filter
-* Lightweight with no dependencies, 23KB size
 
 ## Usage
-
 ```java
 // the maximum number of elements that the filter will contain
 int numberOfElements = 1000 * 1000;
@@ -66,10 +52,11 @@ any implementation can be provide and thus be used as a bloom-filter implementat
 out bloom filter implementations backed by file based persistence, Redis server or similar. The following
 implementations are available for the `interface`:
 
-* FastBitArray - faster than the default Java one
-* JavaBitSetArray - uses Java BitSet as backing array
-* FileBackedBitArray - uses normal file backing object in random mode
-* MMapFileBackedBitArray - uses memory-mapped file, much faster than FileBackedBitArray
+* `FastBitArray` - faster than the default Java one
+* `JavaBitSetArray` - uses Java `BitSet` as backing array
+* `FileBackedBitArray` - uses normal file backing object in random mode
+* `MMapFileBackedBitArray` - uses memory-mapped file, much faster than `FileBackedBitArray`
+* `RoaringBitSetArray` - uses [Roaring Bitmaps](https://roaringbitmap.org/)
 
 
 ## Builds
