@@ -9,12 +9,6 @@ entire bloom filter is abstracted into various layers so that the same can be ch
 such as decomposing an object to a byte-stream, or the hash function to be used, or the serialization strategy to
 be used.
 
-The library is unit-tested on the following platforms:
-
-* Oracle JDK 7
-* Oracle JDK 8
-* Oracle JDK 9
-
 ## Why another Bloom Filter implementation?
 
 
