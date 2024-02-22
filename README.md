@@ -1,7 +1,6 @@
 # bloomfilter
 
-[![Build Status](https://img.shields.io/travis/sangupta/bloomfilter.svg)](https://travis-ci.org/sangupta/bloomfilter)
-[![Coverage Status](https://img.shields.io/coveralls/sangupta/bloomfilter.svg)](https://coveralls.io/github/sangupta/bloomfilter?branch=master)
+[![CI](https://github.com/michaelmior/bloomfilter/actions/workflows/ci.yml/badge.svg)](https://github.com/michaelmior/bloomfilter/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/sangupta/bloomfilter.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maven Central](https://img.shields.io/maven-central/v/com.sangupta/bloomfilter.svg)](https://maven-badges.herokuapp.com/maven-central/com.sangupta/bloomfilter)
 
