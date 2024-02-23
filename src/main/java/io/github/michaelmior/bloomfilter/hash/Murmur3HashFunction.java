@@ -34,6 +34,7 @@ import com.sangupta.murmur.Murmur3;
  */
 public class Murmur3HashFunction implements HashFunction, Serializable {
 	
+	private static final long serialVersionUID = 5361322876586377247L;
 	private static final long SEED = 0x7f3a21eal;
 	
 	@Override

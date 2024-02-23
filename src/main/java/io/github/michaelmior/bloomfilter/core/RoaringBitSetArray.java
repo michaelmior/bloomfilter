@@ -34,7 +34,9 @@ import org.roaringbitmap.RoaringBitmap;
  * @since 1.0
  */
 public class RoaringBitSetArray implements BitArray, Serializable {
-	
+
+	private static final long serialVersionUID = 7121713948768308210L;
+
 	final RoaringBitmap bitmap;
 	
 	final int size;

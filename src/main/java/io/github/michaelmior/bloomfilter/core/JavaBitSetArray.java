@@ -34,7 +34,9 @@ import java.util.BitSet;
  * @since 1.0
  */
 public class JavaBitSetArray implements BitArray, Serializable {
-	
+
+	private static final long serialVersionUID = -1574229333696221003L;
+
 	final BitSet bitSet;
 	
 	final int size;

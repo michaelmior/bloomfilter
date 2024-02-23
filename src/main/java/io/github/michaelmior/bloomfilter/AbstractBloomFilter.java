@@ -55,7 +55,9 @@ import io.github.michaelmior.bloomfilter.hash.Murmur3HashFunction;
  * @param <T> the type of objects to be stored in the filter
  */
 public abstract class AbstractBloomFilter<T> implements BloomFilter<T>, Serializable {
-	
+
+	private static final long serialVersionUID = -3893200895703835357L;
+
 	/**
 	 * The decomposer to use when there is none specified at construction
 	 */
