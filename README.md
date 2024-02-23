@@ -61,6 +61,10 @@ implementations are available for the `interface`:
 
 ## Builds
 
+**0.10.1** (23 Feb 2024)
+
+* Add `serialVersionUID`
+
 **0.10.0** (23 Feb 2024)
 
 * First build with new coordinates and Roaring Bitmap support
