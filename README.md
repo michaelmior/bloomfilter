@@ -61,6 +61,10 @@ implementations are available for the `interface`:
 
 ## Builds
 
+**0.10.0** (23 Feb 2024)
+
+* First build with new coordinates and Roaring Bitmap support
+
 **0.9.0** (17 Jun 2017)
 
 * First release with Murmur 1/2/3 hashes
@@ -71,9 +75,9 @@ The library can be downloaded from Maven Central using:
 
 ```xml
 <dependency>
-    <groupId>com.sangupta</groupId>
+    <groupId>io.github.michaelmior</groupId>
     <artifactId>bloomfilter</artifactId>
-    <version>0.9.0</version>
+    <version>0.10.0</version>
 </dependency>
 ```
 
